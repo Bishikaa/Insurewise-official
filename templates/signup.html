@@ -6,6 +6,8 @@
   <title>Sign Up - InsureWise</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="/static/styles.css" rel="stylesheet">
+  <!-- Font Awesome for eye icon (or use another icon library) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-[#E0E2E4] min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
@@ -34,13 +36,23 @@
           value="{{ email if email is defined else '' }}"
           class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
       </div>
-      <div>
-        <input name="password" type="password" placeholder="Password" required
+
+      <!-- Password field with toggle -->
+      <div class="relative">
+        <input id="password" name="password" type="password" placeholder="Password" required
           class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+        <button type="button" onclick="togglePassword('password')" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <i id="eye-icon-password" class="fas fa-eye-slash text-gray-500 hover:text-gray-700"></i>
+        </button>
       </div>
-      <div>
-        <input name="confirm_password" type="password" placeholder="Confirm password" required
+
+      <!-- Confirm Password field with toggle -->
+      <div class="relative">
+        <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirm password" required
           class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+        <button type="button" onclick="togglePassword('confirm_password')" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <i id="eye-icon-confirm_password" class="fas fa-eye-slash text-gray-500 hover:text-gray-700"></i>
+        </button>
       </div>
 
       <button type="submit"
@@ -56,5 +68,22 @@
       </p>
     </div>
   </div>
+
+  <script>
+    function togglePassword(fieldId) {
+      const passwordField = document.getElementById(fieldId);
+      const eyeIcon = document.getElementById(`eye-icon-${fieldId}`);
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      } else {
+        passwordField.type = "password";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      }
+    }
+  </script>
 </body>
 </html>

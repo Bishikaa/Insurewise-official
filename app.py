@@ -91,38 +91,55 @@ def logout():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password']
-
-        # Email validation
-        if not re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email):
-            flash("Invalid email format. Please enter a valid email address.")
-            return render_template('signup.html', name=name, email=email)
-
-        # Password validation
-        if password != confirm_password:
-            flash("Passwords don't match. Please make sure both password fields are the same.")
-            return render_template('signup.html', name=name, email=email)
-
-        # Password strength check
-        if not re.match(r'^[A-Z][A-Za-z0-9]*[0-9]+.*$', password):
-            flash("Password must start with an uppercase letter and contain at least one number.")
-            return render_template('signup.html', name=name, email=email)
-
         try:
-            hashed_password = generate_password_hash(password)
-            with sqlite3.connect(DB_NAME) as conn:
-                c = conn.cursor()
-                c.execute("INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-                          (name, email, hashed_password))
-                conn.commit()
-                flash("Account created successfully! Please log in.")
-                return redirect(url_for('login'))
-        except sqlite3.IntegrityError:
-            flash("Email already exists. Try logging in.")
-            return render_template('signup.html', name=name, email=email)
+            name = request.form.get('name', '').strip()
+            email = request.form.get('email', '').lower().strip()
+            password = request.form.get('password', '')
+            confirm_password = request.form.get('confirm_password', '')
+
+            # Input validation
+            if not all([name, email, password, confirm_password]):
+                flash("All fields are required.")
+                return render_template('signup.html', name=name, email=email)
+
+            # Email validation
+            if not re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email):
+                flash("Invalid email format.")
+                return render_template('signup.html', name=name, email=email)
+
+            # Password validation
+            if password != confirm_password:
+                flash("Passwords don't match.")
+                return render_template('signup.html', name=name, email=email)
+
+            # Password must start with uppercase and contain at least one number
+            if not (password[0].isupper() if password else False):
+                flash("Password must start with an uppercase letter.")
+                return render_template('signup.html', name=name, email=email)
+            
+            if not any(c.isdigit() for c in password):
+                flash("Password must contain at least one number.")
+                return render_template('signup.html', name=name, email=email)
+
+            try:
+                hashed_password = generate_password_hash(password)
+                with sqlite3.connect(DB_NAME) as conn:
+                    c = conn.cursor()
+                    c.execute("INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+                              (name, email, hashed_password))
+                    conn.commit()
+                    flash("Account created successfully! Please log in.")
+                    return redirect(url_for('login'))
+            except sqlite3.IntegrityError:
+                flash("Email already exists. Try logging in.")
+                return render_template('signup.html', name=name, email=email)
+            except sqlite3.Error as e:
+                flash("Database error. Please try again.")
+                return render_template('signup.html', name=name, email=email)
+
+        except Exception as e:
+            flash("An error occurred. Please try again.")
+            return render_template('signup.html')
 
     return render_template('signup.html')
 

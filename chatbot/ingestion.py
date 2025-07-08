@@ -2,9 +2,6 @@ from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-import pysqlite3
-import sys
-sys.modules["sqlite3"] = pysqlite3
 
 from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
