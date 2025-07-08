@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - InsureWise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body class="bg-[#E0E2E4] min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-2">Create your account</h2>
+    <p class="text-center text-gray-600 mb-6">Join InsureWise today</p>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="mb-4 text-red-600 font-medium text-center">
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="space-y-6">
+      <div>
+        <input name="name" type="text" placeholder="Full name" required
+          value="{{ name if name is defined else '' }}"
+          class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+      </div>
+      <div>
+        <input name="email" type="email" placeholder="Email address" required
+          value="{{ email if email is defined else '' }}"
+          class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+      </div>
+      <div>
+        <input name="password" type="password" placeholder="Password" required
+          class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+      </div>
+      <div>
+        <input name="confirm_password" type="password" placeholder="Confirm password" required
+          class="appearance-none rounded-lg relative block w-full px-4 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+        Create Account
+      </button>
+    </form>
+
+    <div class="text-center mt-6">
+      <p class="text-gray-600">
+        Already have an account?
+        <a href="/login" class="text-blue-600 hover:text-blue-700 font-medium">Log in</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

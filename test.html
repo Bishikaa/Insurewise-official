@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <title>InsureWise Header - Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+<body>
+  <form id="insurance-form" class="max-w-xl mx-auto p-6 bg-white shadow-lg rounded-2xl space-y-4">
+    <h2 class="text-2xl font-bold text-center text-gray-800">Insurance Eligibility Form</h2>
+  
+    <!-- Full Name -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Full Name</label>
+      <input type="text" name="full_name" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Date of Birth -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Date of Birth</label>
+      <input type="date" name="dob" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Gender -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Gender</label>
+      <select name="gender" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
+  
+    <!-- Sum Assured -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Sum Assured (NRs)</label>
+      <input type="number" name="sum_assured" required min="0" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Policy Term -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Policy Term (Years)</label>
+      <input type="number" name="policy_term" required min="1" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Premium Payment Mode -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Premium Payment Mode</label>
+      <select name="payment_mode" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="">Select</option>
+        <option>Yearly</option>
+        <option>Half-Yearly</option>
+        <option>Quarterly</option>
+        <option>Monthly</option>
+      </select>
+    </div>
+  
+    <!-- Occupation -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Occupation</label>
+      <input type="text" name="occupation" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Annual Income -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Annual Income (NRs)</label>
+      <input type="number" name="income" required min="0" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Smoker Status -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Smoker?</label>
+      <select name="smoker_status" required class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+  
+    <!-- Health Conditions -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Any Health Conditions? (optional)</label>
+      <textarea name="health_conditions" rows="3" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+    </div>
+  
+    <!-- Number of Group Members -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Number of People (if Group Plan)</label>
+      <input type="number" name="group_size" min="0" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Spouse Age (if applicable) -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Spouse Age (if applicable)</label>
+      <input type="number" name="spouse_age" min="0" class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition">Submit</button>
+    </div>
+  </form>
+</body>
+</html>

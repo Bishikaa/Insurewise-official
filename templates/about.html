@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - InsureWise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="MAINABOUT.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/about.css">
+</head>
+<body>
+    <!-- Header (Same as index.html) -->
+    <header class="bg-cover bg-center shadow-md" 
+    style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=3540'); 
+           background-blend-mode: overlay; 
+           background-color: rgba(255, 255, 255, 0.9)">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <svg class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span class="ml-2 text-xl font-bold text-gray-900">InsureWise</span>
+        </a>
+        <div class="flex items-center space-x-4">
+            <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+            <a href="/services" class="text-gray-600 hover:text-gray-900">Services</a>
+            {% if session['user_name'] %}
+            <!-- Profile Dropdown -->
+            <div class="relative">
+                <button id="profileBtn" class="flex items-center focus:outline-none">
+                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4.41 0-8 2.69-8 6v2h16v-2c0-3.31-3.59-6-8-6z"/>
+                        </svg>
+                    </div>
+                </button>
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                    <div class="px-4 py-3 text-gray-800">
+                        Hello, {{ session['user_name'] }}!
+                    </div>
+                    <a href="/logout" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+</header>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+
+    <section class="hero" style="background-image: url('https://i.pinimg.com/736x/a0/57/af/a057afe4ded4705c350f58f5be2521af.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container">
+        <h1 class="hero-title">Smart Insurance Recommendations</h1>
+        <p class="hero-subtitle">
+            We believe there's a better way to find insurance. Get personalized recommendations based on your unique needs and budget.
+        </p>
+        <div class="hero-buttons">
+            <!-- <a class="btn btn-secondary">Chat now</button> -->
+            <a href="/chat" class="btn btn-secondary">Chat now</a>
+            <a href="/faqs" class="btn btn-outline">View FAQ</a>
+        </div>
+        <div class="waitlist-count">
+        </div>
+    </div>
+</section>
+
+
+      <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title">Inspired by Industry Leaders</h2>
+            <p class="section-subtitle">
+                Built on research and inspired by leading insurance providers, our platform showcases how smart insurance solutions could work for you.
+            </p>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">👤</div>
+                    <h3>Knowledgeable Guidance</h3>
+                    <p>Simulated by trained student advisors</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⭐</div>
+                    <h3>Top-Grade Simulation</h3>
+                    <p>Built to reflect industry excellence</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">👥</div>
+                    <h3>Future-Ready Platform</h3>
+                    <p>Designed to scale for thousands</p>
+                </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">The InsureWise Story</h2>
+            <p class="about-text">
+                At InsureWise, we believe there is a better way to find insurance. A more valuable way where customers are empowered rather than confused. We're obsessively passionate about personalized recommendations, and our mission is to help people achieve financial security. We focus on intelligent matching and data-driven insights, and we see that as an opportunity. We're excited to simplify insurance for everyone through our advanced technology and expert guidance.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founding Story -->
+    <section id="story" class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Insurance consultation meeting">
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Our Founding</h3>
+                    <p>
+                        InsureWise was established in 2025 as a conceptual project aimed at exploring the future of insurance through the lens of technology and innovation. Created as part of an academic initiative, the platform was designed to simulate how modern tools—like AI-powered recommendations—could transform the insurance experience.
+
+Driven by research and inspired by real-world industry practices, InsureWise demonstrates how technology can simplify and enhance decision-making in the insurance sector.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Story -->
+    <section class="growth-section">
+        <div class="container">
+            <div class="story-grid reverse">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Business meeting for insurance planning">
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Early Growth & Expansion</h3>
+                    <p class="story-text">
+                    </p>
+                    InsureWise began in early 2025 as an academic project focused on exploring how technology could modernize the insurance experience. Over the course of several months, the project evolved from a basic concept into a working prototype, showcasing AI-powered tools designed to simulate personalized insurance recommendations.
+While still in its early stages, InsureWise demonstrates how thoughtful design and innovation could align with the needs of today’s insurance market.
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Series B -->
+    <section class="funding-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Family protection insurance planning">
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">Protection</h3>
+                    <p>
+As part of our project development, we focused on creating tools that offer basic financial protection planning features. By incorporating simple integrations and streamlining user experience, we were able to build a functional prototype for family protection planning. This version of our platform highlights our commitment to learning and innovation as part of our school project.                    </p>
+                    <p>
+                        This funding enabled us to expand our AI capabilities and launch our comprehensive family protection planning platform.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Mission -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="story-grid reverse">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Professional insurance team collaboration">
+                </div>
+                <div class="story-content">
+                    <h3 class="story-title">A New Chapter</h3>
+                    <p class="story-text">
+As we refined our project’s focus on insurance solutions, we decided to give it a fresh identity. In 2025, we rebranded from TechCover to InsureWise, refining and adjusting better to match the requirements of the people and to better reflect our evolving ideas and goals. Our mission is to explore how intelligent technology, content, and user-friendly design can improve the experience of matching with the right insurance policies.                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise-section">
+        <div class="container">
+            <h2 class="section-title white">Our Expertise</h2>
+            <p class="section-subtitle white">
+                We specialize in comprehensive insurance solutions tailored to your unique needs and circumstances.
+            </p>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">🏠</div>
+                    <h3>Home Insurance</h3>
+                    <p>Comprehensive coverage for your most valuable asset with competitive rates and excellent service.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🚗</div>
+                    <h3>Auto Insurance</h3>
+                    <p>Personalized auto coverage that fits your driving habits and budget requirements.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">❤️</div>
+                    <h3>Life Insurance</h3>
+                    <p>Protect your family's financial future with term and whole life insurance options.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🏢</div>
+                    <h3>Business Insurance</h3>
+                    <p>Comprehensive business protection including liability, property, and workers' compensation.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">☂️</div>
+                    <h3>Personal Umbrella</h3>
+                    <p>Extra liability protection that goes beyond your standard home and auto policies.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🎓</div>
+                    <h3>Education Planning</h3>
+                    <p>Secure your children's educational future with specialized savings and insurance products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist-section">
+        <div class="container">
+            <h2 class="section-title">Join Insurewise today</h2>
+            <p class="section-subtitle">
+                Be among the first to experience personalized insurance recommendations tailored just for you!
+            </p>
+            
+               
+            </form>
+        </div>
+    </section>
+            <!-- Mission Statement -->
+            <div class="bg-blue-600 text-white rounded-lg p-8 text-center">
+                <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+                <p class="text-xl max-w-3xl mx-auto">
+                    To provide peace of mind through innovative insurance solutions, exceptional service, 
+                    and unwavering commitment to our customers' security and success.
+                    
+<div class="flex flex-col items-center gap-8">
+                    <a href="/chat" class="bg-white border-white text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center gap-2">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Start Now
+                    </a>
+               
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+</body>
+
+   <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">InsureWise</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Providing peace of mind through comprehensive insurance solutions since 2025.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="/services" class="text-gray-400 hover:text-white transition-colors">Our Services</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>123 Insurance Street</li>
+                        <li>kalanki, NY 10001</li>
+                        <li>Phone: (997+) 123-4567</li>
+                        <li>Email: contact@insurewise.com</li>
+                        <li>Hours: Mon-Fri 9am-6pm EST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 InsureWise. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const profileBtn = document.getElementById("profileBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+    
+        if (profileBtn) {
+            profileBtn.addEventListener("click", function () {
+                dropdownMenu.classList.toggle("hidden");
+            });
+    
+            // Optional: hide dropdown if clicked outside
+            document.addEventListener("click", function (e) {
+                if (!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.add("hidden");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Eligibility Form</title>
+    <link rel="stylesheet" href="/static/form.css" />
+
+</head>
+<body>
+    <h1>Insurance Eligibility Check</h1>
+    <form id="eligibilityForm">
+        <!-- Basic Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required><br><br>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+            
+            <label for="age">Current Age:</label>
+            <input type="number" id="age" name="age" min="1" max="100" required><br><br>
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br><br>
+        </fieldset>
+
+        <!-- Insurance Plan Selection -->
+        <fieldset>
+            <legend>Plan Selection</legend>
+            <label for="company">Insurance Company:</label>
+            <select id="company" name="company" required>
+                <option value="">Select Company</option>
+                <option value="suryajyoti">SURYAJYOTI</option>
+                <option value="lic_nepal">LIC NEPAL</option>
+                <option value="sanima">SANIMA</option>
+                <option value="met_life">MET LIFE</option>
+                <option value="sunlife">SUNLIFE</option>
+            </select><br><br>
+            
+            <label for="planType">Plan Type:</label>
+            <select id="planType" name="planType" required>
+                <option value="">Select Plan Type</option>
+                <!-- SuryaJyoti Plans -->
+                <option value="Surakshit_Bhawishya" class="suryajyoti">SuryaJyoti Surakshit Bhawishya</option>
+                <option value="Yekal_Simit" class="suryajyoti">SuryaJyoti Yekal-Simit Awadhi</option>
+                <option value="Samuhik_Sawadhik" class="suryajyoti">SuryaJyoti Samuhik Sawadhik</option>
+                <option value="Dhanbridhi" class="suryajyoti">SuryaJyoti Dhanbridhi</option>
+                <option value="Term_Plan" class="suryajyoti">SuryaJyoti Term Plan</option>
+                <option value="Group_Term" class="suryajyoti">Group Term Life</option>
+                <option value="Jeevan_Anand" class="suryajyoti">Jeevan Anand</option>
+                <option value="Bima_Kiran" class="suryajyoti">Bima Kiran</option>
+                <option value="Jeevan_Astha" class="suryajyoti">Jeevan Astha</option>
+                <option value="Dhan_Bristi" class="suryajyoti">Dhan Bristi</option>
+                <option value="Money_Back" class="suryajyoti">Money Back Plan</option>
+                <option value="Endowment" class="suryajyoti">Endowment Plan</option>
+                <option value="Naulo_Baal" class="suryajyoti">Naulo Baal Jeevan Beema</option>
+                
+                <!-- LIC Nepal Plans -->
+                <option value="Jeevan_Anand_lic" class="lic_nepal">Jeevan Anand (LIC)</option>
+                <option value="Bima_Kiran_lic" class="lic_nepal">Bima Kiran (LIC)</option>
+                <option value="Jeevan_Astha_lic" class="lic_nepal">Jeevan Astha (LIC)</option>
+                <option value="Amulya_Jeevan" class="lic_nepal">Amulya Jeevan</option>
+                <option value="Jeevan_Saathi" class="lic_nepal">Jeevan Saathi</option>
+                <option value="Endowment_lic" class="lic_nepal">Endowment (LIC)</option>
+                <option value="Money_Back_lic" class="lic_nepal">Money Back (LIC)</option>
+                <option value="Jeevan_Labh" class="lic_nepal">Jeevan Labh</option>
+                <option value="Mero_Mutu" class="lic_nepal">MERO MUTU (CHILD)</option>
+                
+                <!-- Sanima Plans -->
+                <option value="New_Jeevan_Tarang" class="sanima">New Jeevan Tarang</option>
+                <option value="Joint_Life" class="sanima">JOINT LIFE ENDOWMENT</option>
+                <option value="Annual_Money_Back" class="sanima">ANNUAL MONEY BACK</option>
+                <option value="Limited_Wholelife" class="sanima">LIMITED PAYING WHOLELIFE</option>
+                <option value="Limited_Endowment" class="sanima">LIMITED ENDOWMENT</option>
+                <option value="Dhanapati" class="sanima">DHANAPATI</option>
+                <option value="Myadi_Laghu" class="sanima">MYADI LAGHU SANYUKTA</option>
+                <option value="Endowment_Whole" class="sanima">ENDOWMENT/WHOLE LIFE</option>
+                <option value="Term_Assurance" class="sanima">TERM ASSURANCE</option>
+                <option value="Sunishchit" class="sanima">SUNISHCHIT PRATIPHAL</option>
+                <option value="5_Rupee" class="sanima">JUST 5 RUPEE PER DAY</option>
+                
+                <!-- Met Life Plans -->
+                <option value="Group_Medical" class="met_life">Group Medical</option>
+                <option value="LifeShield" class="met_life">LifeShield</option>
+                <option value="Future_Care" class="met_life">Future Care DPS</option>
+                <option value="Life_Cares" class="met_life">Life Cares</option>
+                <option value="SME_Benefits" class="met_life">SME Employee Benefits</option>
+                <option value="Subhabisya" class="met_life">Subhabisya Beema</option>
+                
+                <!-- Sunlife Plans -->
+                <option value="Sunlife_Endowment" class="sunlife">SUNLIFE ENDOWMENT</option>
+                <option value="Dhananjaya" class="sunlife">DHANANJAYA YEARLY</option>
+                <option value="Myadi_Laghu_Sun" class="sunlife">MYADI LAGHU SANYUKTA (Sunlife)</option>
+                <option value="15_Years_Money" class="sunlife">15-YEARS MONEY BANK</option>
+                <option value="Single_Premium" class="sunlife">SINGLE PREMIUM</option>
+                <option value="Limited_Payment" class="sunlife">LIMITED PAYMENT ENDOWMENT</option>
+                <option value="Endowment_Cum" class="sunlife">ENDOWMENT CUM WHOLE LIFE</option>
+                <option value="Group_Term_Sun" class="sunlife">GROUP TERM ASSURANCE</option>
+                <option value="Endowment_Golden" class="sunlife">SUN LIFE ENDOWMENT GOLDEN</option>
+                <option value="5_Rupee_Sun" class="sunlife">JUST 5 RUPEE PER DAY (Sunlife)</option>
+            </select><br><br>
+        </fieldset>
+
+        <!-- Plan Specific Criteria -->
+        <fieldset>
+            <legend>Plan Requirements</legend>
+            <label for="sumAssured">Desired Sum Assured (NPR):</label>
+            <input type="number" id="sumAssured" name="sumAssured" min="25000" required><br><br>
+            
+            <label for="policyTerm">Desired Policy Term (Years):</label>
+            <input type="number" id="policyTerm" name="policyTerm" min="1" max="59" required><br><br>
+            
+            <label for="premiumMode">Premium Payment Mode:</label>
+            <select id="premiumMode" name="premiumMode" required>
+                <option value="">Select</option>
+                <option value="yearly">Yearly</option>
+                <option value="half_yearly">Half-Yearly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="monthly">Monthly</option>
+                <option value="single">Single</option>
+            </select><br><br>
+            
+            <!-- For child plans -->
+            <div id="childFields" style="display:none;">
+                <label for="childAge">Child's Age (if applicable):</label>
+                <input type="number" id="childAge" name="childAge" min="0" max="17"><br><br>
+            </div>
+            
+            <!-- For group plans -->
+            <div id="groupFields" style="display:none;">
+                <label for="groupSize">Group Size (if applicable):</label>
+                <input type="number" id="groupSize" name="groupSize" min="10"><br><br>
+            </div>
+            
+            <label for="tobacco">Do you use tobacco products?</label>
+            <select id="tobacco" name="tobacco" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br><br>
+            
+            <label for="existingConditions">Any existing medical conditions?</label>
+            <textarea id="existingConditions" name="existingConditions" rows="3"></textarea><br><br>
+        </fieldset>
+
+        <button type="submit">Check Eligibility</button>
+    </form>
+
+    <script>
+        // Show/hide child/group fields based on plan selection
+        document.getElementById('planType').addEventListener('change', function() {
+            const planType = this.value;
+            const childFields = document.getElementById('childFields');
+            const groupFields = document.getElementById('groupFields');
+            
+            // Hide both by default
+            childFields.style.display = 'none';
+            groupFields.style.display = 'none';
+            
+            // Show child fields for child plans
+            if (planType === 'Naulo_Baal' || planType === 'Mero_Mutu' || 
+                planType === 'Dhananjaya' || planType === '5_Rupee' || 
+                planType === '5_Rupee_Sun') {
+                childFields.style.display = 'block';
+            }
+            
+            // Show group fields for group plans
+            if (planType === 'Group_Term' || planType === 'Group_Medical' || 
+                planType === 'SME_Benefits' || planType === 'Group_Term_Sun') {
+                groupFields.style.display = 'block';
+            }
+        });
+
+        // Filter plans based on company selection
+        document.getElementById('company').addEventListener('change', function() {
+            const company = this.value;
+            const planSelect = document.getElementById('planType');
+            
+            // Hide all options first
+            Array.from(planSelect.options).forEach(option => {
+                option.style.display = 'none';
+            });
+            
+            // Show only relevant options
+            if (company) {
+                // Show default option
+                planSelect.options[0].style.display = '';
+                
+                // Show company-specific options
+                Array.from(planSelect.options).forEach(option => {
+                    if (option.className === company) {
+                        option.style.display = '';
+                    }
+                });
+            } else {
+                // Show all options if no company selected
+                Array.from(planSelect.options).forEach(option => {
+                    option.style.display = '';
+                });
+            }
+            
+            // Reset plan selection
+            planSelect.selectedIndex = 0;
+        });
+
+        // Form submission
+        document.getElementById('eligibilityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would collect the form data and send to your LLM
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            console.log('Form data to be sent to LLM:', data);
+            alert('Eligibility check submitted!');
+        });
+    </script>
+</body>
+</html>

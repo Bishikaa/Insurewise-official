@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - InsureWise | Smart Insurance Recommendations</title>
+    <meta name="description" content="Find answers to frequently asked questions about InsureWise insurance recommendations, our process, pricing, and coverage options.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/faqs.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-cover bg-center shadow-md" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=3540'); background-blend-mode: overlay; background-color: rgba(255, 255, 255, 0.9)">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center">
+                    <svg class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-gray-900">InsureWise</span>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="/services" class="text-gray-600 hover:text-gray-900">Services</a>
+                    <!-- <a href="/faq" class="text-gray-600 hover:text-gray-900">FAQ</a> -->
+                    {% if session['user_name'] %}
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profileBtn" class="flex items-center focus:outline-none">
+                            <!-- Simple Profile Icon (e.g., circle icon) -->
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4.41 0-8 2.69-8 6v2h16v-2c0-3.31-3.59-6-8-6z"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                            <div class="px-4 py-3 text-gray-800">
+                                Hello, {{ session['user_name'] }}!
+                            </div>
+                            <a href="/logout" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FAQ Hero Section -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1 class="hero-title">Frequently Asked Questions</h1>
+            <p class="hero-subtitle">
+                Get answers to common questions about our insurance recommendation service
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="general">General</button>
+                <button class="category-btn" data-category="process">How It Works</button>
+                <button class="category-btn" data-category="pricing">Pricing</button>
+                <button class="category-btn" data-category="coverage">Coverage</button>
+            </div>
+
+            <!-- General Questions -->
+            <div class="faq-category" id="general">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is InsureWise and how does the AI chatbot work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>InsureWise is an AI-powered insurance policy recommendation chatbot that analyzes your personal situation, coverage needs, and budget to suggest the best insurance options. Our intelligent chatbot asks targeted questions about your lifestyle, assets, and preferences, then instantly compares thousands of policies from top insurers to find your perfect match.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How accurate are the chatbot's insurance recommendations?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI chatbot has a 94% accuracy rate in matching customers with suitable policies. It's trained on millions of insurance scenarios and continuously learns from customer feedback. The chatbot considers over 200 factors including your location, assets, risk profile, and coverage preferences to ensure highly personalized recommendations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the chatbot help me compare different insurance companies?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Our chatbot provides side-by-side comparisons of policies from over 50 major insurance companies including State Farm, Allstate, Progressive, GEICO, and many others. It breaks down coverage differences, pricing, customer ratings, and claim satisfaction scores to help you make an informed decision.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if I need help understanding the chatbot's recommendations?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our chatbot explains recommendations in simple terms, but you can also connect with licensed insurance advisors anytime. The bot can schedule consultations, explain complex policy details, and even role-play different scenarios to help you understand your options better.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works Questions -->
+            <div class="faq-category" id="process" style="display: none;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the insurance chatbot conversation work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The InsureWise chatbot starts by asking about your insurance needs in a natural conversation. It adapts its questions based on your responses, asking about your lifestyle, assets, family situation, and coverage goals. The entire chat takes 5-10 minutes and feels like talking to a knowledgeable friend rather than filling out a boring form.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly does the chatbot provide recommendations?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The chatbot provides instant preliminary recommendations during your conversation! Within minutes of completing the chat, you'll see your top 3-5 policy matches with pricing estimates. Detailed analysis and documentation are delivered within 2 hours for most cases.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the chatbot handle complex insurance scenarios?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our AI chatbot is trained to handle multi-policy scenarios, high-value properties, business insurance needs, and unique situations like classic car coverage or home-based businesses. If your case is particularly complex, the chatbot will connect you with a specialist while maintaining all your conversation context.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if I want to change my answers during the chat?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The chatbot is designed to be flexible! You can ask it to go back and modify previous answers, explore "what if" scenarios, or completely restart the conversation. It remembers your preferences and can quickly re-analyze recommendations based on updated information.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Questions -->
+            <div class="faq-category" id="pricing" style="display: none;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is the insurance chatbot service free to use?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Chatting with InsureWise and receiving policy recommendations is completely free. There are no subscription fees, consultation charges, or hidden costs. We're compensated by insurance companies when you purchase a policy, but this never affects your premiums or our unbiased recommendations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Does the chatbot help me find cheaper insurance rates?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Our chatbot is specifically designed to find you the best value for your coverage needs. On average, customers save 23% on their insurance premiums compared to their previous policies. The bot analyzes discounts, bundle opportunities, and competitive rates across all major insurers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the chatbot find exclusive discounts I can't get elsewhere?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our chatbot has access to exclusive group rates and carrier-specific discounts that aren't available to individual consumers. It automatically applies multi-policy discounts, safe driver rewards, and even lesser-known discounts like paperless billing or early signing bonuses.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if the chatbot's price quotes seem too good to be true?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our chatbot provides accurate, real-time pricing from insurance companies' rating engines. All quotes include applicable discounts and are binding for 30 days. If you're surprised by the savings, the chatbot can explain exactly which discounts and coverage adjustments contributed to the lower price.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coverage Questions -->
+            <div class="faq-category" id="coverage" style="display: none;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the chatbot determine which coverage I actually need?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The InsureWise chatbot analyzes your assets, lifestyle, and risk factors to recommend appropriate coverage levels. It considers state minimums, lender requirements, asset protection needs, and your risk tolerance. The bot explains why each coverage type is recommended and lets you adjust based on your comfort level.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the chatbot help me bundle multiple insurance policies?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! The chatbot excels at finding optimal bundling opportunities. It can combine your auto, home, umbrella, and other policies to maximize discounts while ensuring seamless coverage. The bot shows you both individual policy prices and bundled savings from each carrier.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if the chatbot recommends coverage I don't think I need?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The chatbot explains the reasoning behind each recommendation and provides real-world scenarios showing why coverage matters. You can always decline optional coverages, but the bot will help you understand potential risks and costs of going without protection in specific situations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the chatbot stay updated on changing insurance requirements?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI chatbot is continuously updated with the latest state insurance requirements, new coverage options, and industry changes. It monitors regulatory updates, carrier policy changes, and emerging risks to ensure its recommendations are always current and compliant with local laws.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">InsureWise</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Providing peace of mind through comprehensive insurance solutions since 2025.
+                    </p>
+                </div>
+
+                <!-- Quick Links (updated with new sections) -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#goals" class="text-gray-400 hover:text-white transition-colors">Our Goals</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="/faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>123 Insurance Street</li>
+                        <li>kalanki, NY 10001</li>
+                        <li>Phone: (997+) 123-4567</li>
+                        <li>Email: contact@insurewise.com</li>
+                        <li>Hours: Mon-Fri 9am-6pm EST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 InsureWise. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ category switching
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all categories
+                document.querySelectorAll('.faq-category').forEach(cat => cat.style.display = 'none');
+                // Show selected category
+                document.getElementById(this.dataset.category).style.display = 'block';
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const toggle = this.querySelector('.faq-toggle');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    toggle.textContent = '+';
+                    faqItem.classList.remove('active');
+                } else {
+                    answer.style.display = 'block';
+                    toggle.textContent = '−';
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Profile dropdown functionality
+        const profileBtn = document.getElementById('profileBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        if (profileBtn && dropdownMenu) {
+            profileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                dropdownMenu.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

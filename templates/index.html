@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsureWise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+   <!-- Header -->
+        <header class="bg-cover bg-center shadow-md" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=3540'); background-blend-mode: overlay; background-color: rgba(255, 255, 255, 0.9)">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="/" class="flex items-center">
+                        <svg class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold text-gray-900">InsureWise</span>
+                    </a>
+                    <div class="flex items-center space-x-4">
+                        <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+                        <a href="/services" class="text-gray-600 hover:text-gray-900">Services</a>
+                        {% if session['user_name'] %}
+                        <!-- Profile Dropdown -->
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profileBtn" class="flex items-center focus:outline-none">
+                            <!-- Simple Profile Icon (e.g., circle icon) -->
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4.41 0-8 2.69-8 6v2h16v-2c0-3.31-3.59-6-8-6z"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                            <div class="px-4 py-3 text-gray-800">
+                                Hello, {{ session['user_name'] }}!
+                            </div>
+                            <a href="/logout" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+
+                        {% else %}
+                        <a href="/login" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+    <!-- Main Content (from old version) -->
+    <main class="min-h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=3540'); background-blend-mode: overlay; background-color: rgba(255, 255, 255, 0.2)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="text-center mb-16 backdrop-blur-sm bg-white/30 p-12 rounded-2xl">
+                <h1 class="text-6xl font-bold text-gray-900 mb-6">
+                    InsureWise AI
+                </h1>
+                <p class="text-2xl text-gray-800 max-w-3xl mx-auto mb-12">
+                    Your intelligent insurance assistant
+                </p>
+                
+                <div class="flex flex-col items-center gap-8">
+                    <a href="/chat" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center gap-2">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Start Now
+                    </a>
+                    <p class="text-lg text-gray-800 italic">
+                        "The insurance you do not own will never assure your success."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- STG Goals Section (from new version) -->
+    <section id="goals" class="py-20 bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=3540'); background-blend-mode: overlay; background-color: rgba(255, 255, 255, 0.9)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">SDG Goals</h2>
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto">Five key objectives that drive our mission forward</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Goal 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                            <path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                            <path d="M12 21c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                            <path d="M12 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Goal 3: Good Health and Well-being</h3>
+                    <p class="text-gray-600 text-center">Through health insurance recommendation chatbot
+                        enables people to obtain cost-effective medical care with financial
+                        protection during a medical crisis.</p>
+                </div>
+
+                <!-- Goal 8 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Goal 8: Decent Work and Economic Growth</h3>
+                    <p class="text-gray-600 text-center">The project helps develop digital tools along with AI solutions that establish prospective markets for both innovation and job generation and technology-driven economic expansion.</p>
+                </div>
+
+                <!-- Goal 9 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Goal 9: Industry, Innovation, and Infrastructure</h3>
+                    <p class="text-gray-600 text-center">InsureWise applies modern technologies (AI, NLP, and web development) to improve digital infrastructure and accessibility in the insurance sector.</p>
+                </div>
+
+                <!-- Goal 10 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                            <path d="M12 11h4"/>
+                            <path d="M12 16h4"/>
+                            <path d="M8 11h.01"/>
+                            <path d="M8 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">Goal 10: Reduced Inequalities</h3>
+                    <p class="text-gray-600 text-center">The insurance access simplification provided by chatbot enables equitable insurance services independent of user literacy levels or technological knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section with Fixed Background (from new version) -->
+    <section id="team" class="py-20 bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-blend-mode: overlay; background-color: rgba(0, 0, 0, 0.6)">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Our Team</h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">Meet the innovators behind Insurewise's success</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Team Description -->
+                <div class="backdrop-blur-sm bg-white/10 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-6">Introducing the team and our Cooperation:</h3>
+                    <p class="text-gray-200 text-lg mb-8 leading-relaxed">
+                        
+                    </p>
+                    
+                    <!-- Team Stats -->
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">AI</div>
+                            <div class="text-gray-300 text-sm">Bishika Chhetri</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">Frontend</div>
+                            <div class="text-gray-300 text-sm">Shreya Budhathoki</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">Backend</div>
+                            <div class="text-gray-300 text-sm">Anuj Gyawali</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">Backend</div>
+                            <div class="text-gray-300 text-sm">Binaya choudhary</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Core Values -->
+                    <h4 class="text-xl font-semibold text-white mb-4">Our Core Values</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-200">
+                            <svg class="h-5 w-5 text-blue-400 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11l3 3l8-8"/>
+                            </svg>
+                              Our team worked hard this semester to create an insurance policy recommending chatbot project. We're proud of what we accomplished together and hope our work inspires future innovation in AI and technology. We're grateful to our teachers and professors for giving us this valuable learning opportunity, and to our mentors and seniors for their guidance and support throughout the project. This experience has taught us so much about applying AI in real-world situations.
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Team Photo (Fixed) -->
+                <div class="relative">
+                    <div class="aspect-w-4 aspect-h-5">
+                        <img src="/static/project.jpeg" 
+                             alt="STG Team" 
+                             class="w-full h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/20">
+                    </div>
+                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (from old version with some new elements) -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">InsureWise</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Providing peace of mind through comprehensive insurance solutions since 2025.
+                    </p>
+                </div>
+
+                <!-- Quick Links (updated with new sections) -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#goals" class="text-gray-400 hover:text-white transition-colors">Our Goals</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>123 Insurance Street</li>
+                        <li>kalanki, NY 10001</li>
+                        <li>Phone: (+997) 123-4567</li>
+                        <li>Email: contact@insurewise.com</li>
+                        <li>Hours: Mon-Fri 9am-6pm EST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 InsureWise. All rights reserved.
+                    </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Combined Scripts -->
+    <script>
+        // Profile dropdown functionality (from old version)
+        const profileBtn = document.getElementById("profileBtn");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        if (profileBtn) {
+            profileBtn.addEventListener("click", function () {
+                dropdownMenu.classList.toggle("hidden");
+            });
+
+            // Optional: hide dropdown if clicked outside
+            document.addEventListener("click", function (e) {
+                if (!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.add("hidden");
+                }
+            });
+        }
+p
+        // Smooth scrolling for navigation links (from new version)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Don't apply smooth scrolling to login/logout/profile links
+                if (this.getAttribute('href') === '/login' || 
+                    this.getAttribute('href') === '/logout' || 
+                    this.getAttribute('href').startsWith('#')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
