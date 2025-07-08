@@ -2,6 +2,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmb
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 
+import pysqlite3
+import sys
+sys.modules["sqlite3"] = pysqlite3
 
 
 from langchain_chroma import Chroma
