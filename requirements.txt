@@ -13,3 +13,4 @@ flask
 werkzeug
 markdown
 gunicorn
+pysqlite3-binary
