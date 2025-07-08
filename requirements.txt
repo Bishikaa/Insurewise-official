@@ -10,6 +10,6 @@ langchain-text-splitters
 python-dotenv
 langchain_chroma
 flask
-werkzeug.security
+werkzeug
 markdown
 gunicorn
