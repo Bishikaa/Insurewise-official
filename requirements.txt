@@ -12,3 +12,4 @@ langchain_chroma
 flask
 werkzeug.security
 markdown
+gunicorn
