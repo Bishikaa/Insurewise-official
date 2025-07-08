@@ -3,7 +3,6 @@ langchain
 langchain-google-genai
 google-generativeai
 langchain-huggingface
-transformers
 huggingface-hub
 langchain-community
 langchain-text-splitters
@@ -12,3 +11,4 @@ langchain_chroma
 flask
 werkzeug.security
 markdown
+gunicorn
