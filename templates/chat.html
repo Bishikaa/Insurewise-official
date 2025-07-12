@@ -98,12 +98,210 @@
             background: #ffebee;
             border-left: 4px solid #e74c3c;
         }
+
+        /* Mobile Sidebar Toggle Button */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-toggle .toggle-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-toggle .toggle-icon::before,
+        .sidebar-toggle .toggle-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle .toggle-icon::before {
+            top: 6px;
+            transform: rotate(0deg);
+        }
+
+        .sidebar-toggle .toggle-icon::after {
+            bottom: 6px;
+            transform: rotate(0deg);
+        }
+
+        .sidebar-toggle.active .toggle-icon::before {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+
+        .sidebar-toggle.active .toggle-icon::after {
+            transform: rotate(-45deg);
+            bottom: 9px;
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                margin: 0;
+                border-radius: 0;
+                height: 100vh;
+                position: relative;
+            }
+
+            .sidebar {
+                position: fixed !important;
+                top: 0 !important;
+                left: -300px !important;
+                height: 100vh !important;
+                width: 300px !important;
+                z-index: 1001 !important;
+                transition: transform 0.3s ease !important;
+                transform: translateX(-100%) !important;
+                margin: 0 !important;
+            }
+
+            .sidebar.active {
+                transform: translateX(0) !important;
+                left: 0 !important;
+            }
+
+            .chat-container {
+                margin-left: 0 !important;
+                width: 100% !important;
+                flex: 1 !important;
+            }
+
+            .chat-header {
+                padding: 15px 20px;
+                margin-top: 0;
+            }
+
+            .chat-messages {
+                padding: 15px;
+            }
+
+            .chat-input-container {
+                padding: 15px;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+
+            .form-container {
+                padding: 15px;
+                margin: 0;
+            }
+
+            .sidebar-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile-dropdown {
+                position: relative;
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                right: 0;
+                top: 100%;
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-header {
+                padding: 10px 15px;
+            }
+
+            .chat-messages {
+                padding: 10px;
+            }
+
+            .chat-input-container {
+                padding: 10px;
+            }
+
+            .message-bubble {
+                max-width: 90%;
+                padding: 12px 15px;
+            }
+
+            .bot-details h3 {
+                font-size: 1.1rem;
+            }
+
+            .bot-status {
+                font-size: 0.8rem;
+            }
+
+            .sidebar-toggle {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .sidebar-toggle .toggle-icon {
+                width: 18px;
+                height: 18px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Mobile Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <div class="toggle-icon"></div>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <div class="chatbot-container">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo-container">
                     <div class="logo-text">
@@ -203,6 +401,59 @@
             const dropdownMenu = document.getElementById('dropdownMenu');
             const clearHistoryDropdownBtn = document.getElementById('clearHistoryDropdownBtn');
             const logoutDropdownBtn = document.getElementById('logoutDropdownBtn');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            // Sidebar toggle functionality
+            function toggleSidebar() {
+                console.log('Toggle sidebar clicked');
+                console.log('Sidebar element:', sidebar);
+                console.log('Current sidebar classes:', sidebar.className);
+                
+                sidebar.classList.toggle('active');
+                sidebarToggle.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+                
+                console.log('After toggle - sidebar classes:', sidebar.className);
+                console.log('Sidebar is active:', sidebar.classList.contains('active'));
+                
+                if (sidebar.classList.contains('active')) {
+                    sidebarOverlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    console.log('Sidebar opened');
+                } else {
+                    sidebarOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    console.log('Sidebar closed');
+                }
+            }
+
+            // Event listeners for sidebar
+            console.log('Setting up sidebar event listeners');
+            console.log('Sidebar toggle button:', sidebarToggle);
+            
+            sidebarToggle.addEventListener('click', function(e) {
+                console.log('Sidebar toggle button clicked');
+                e.preventDefault();
+                toggleSidebar();
+            });
+            
+            sidebarOverlay.addEventListener('click', function(e) {
+                console.log('Sidebar overlay clicked');
+                toggleSidebar();
+            });
+
+            // Close sidebar on window resize if screen becomes larger
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('active');
+                    sidebarToggle.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                    sidebarOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
 
             // Toggle dropdown menu
             profileBtn.addEventListener('click', function(e) {
